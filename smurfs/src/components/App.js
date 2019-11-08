@@ -34,8 +34,16 @@ class App extends Component {
 
   handleSumbit = (e)=>{
     e.preventDefault();
+    this.setState({
+      id: Date.now
+    })
     console.log(this.state)
     this.props.dispatch(AddNew(this.state))
+    this.setState({
+      name: "",
+      age:"",
+      height: ""
+    })
   }
 
   componentDidMount(){
@@ -55,8 +63,8 @@ class App extends Component {
         {this.props.smurfs.map((s)=>(
             <div id = {s.id}>
               <h1>{s.name}</h1>
-              <p>-{s.age}</p>
-              <p>-{s.height}</p>
+              <p>age-{s.age}</p>
+              <p>height-{s.height}</p>
             </div>
         ))}
 

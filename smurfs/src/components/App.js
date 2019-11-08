@@ -5,10 +5,42 @@ import {getSmurfs} from "../actions/Actions";
 
 class App extends Component {
 
+  constructor(){
+    super();
+    this.state={
+      name: "",
+      age: "",
+      height: ""
+    }
+  }
+
+  handleNameChange = (e)=>{
+    this.setState({
+      name: e.target.value
+    })
+  }
+
+  handleAgeChange = (e)=>{
+    this.setState({
+      age: e.target.value
+    })
+  }
+
+  handleHeightChange = (e)=>{
+    this.setState({
+      height: e.target.value
+    })
+  }
+
+  handleSumbit = (e)=>{
+    e.preventDefault();
+    console.log(this.state)
+  }
+
   componentDidMount(){
-    console.log("did mount?",this.props)
+    // console.log("did mount?",this.props)
     this.props.dispatch(getSmurfs())
-    console.log(this.props)
+    // console.log(this.props)
   }
   render() {
     return (
@@ -25,6 +57,30 @@ class App extends Component {
               <p>-{s.height}</p>
             </div>
         ))}
+
+        <form>
+          <h1>Add a smurf!</h1>
+          <input 
+          name = "name"
+          type = "text" 
+          placeholder = "name"
+          value = {this.state.name}
+          onChange={this.handleNameChange}></input>
+          <input 
+          name = "age" 
+          type = "text" 
+          placeholder = "age"
+          value = {this.state.age}
+          onChange={this.handleAgeChange}></input>
+          <input 
+          name = "height" 
+          type = "text" 
+          placeholder = "height"
+          value = {this.state.height}
+          onChange={this.handleHeightChange}
+          ></input>
+          <button onClick={this.handleSumbit}>Submit!</button>
+        </form>
   
       </div>
     );

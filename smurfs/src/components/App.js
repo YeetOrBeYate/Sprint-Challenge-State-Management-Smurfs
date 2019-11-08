@@ -17,7 +17,15 @@ class App extends Component {
         <div>Welcome to your state management version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
-        {this.props.isLoading ? console.log("true", this.props) : console.log("false", this.props.smurfs.length)}
+        {this.props.isLoading && <div>Loading..</div>}
+        {this.props.smurfs.map((s)=>(
+            <div id = {s.id}>
+              <h1>{s.name}</h1>
+              <p>-{s.age}</p>
+              <p>-{s.height}</p>
+            </div>
+        ))}
+  
       </div>
     );
   }

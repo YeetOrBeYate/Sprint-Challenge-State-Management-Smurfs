@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import {connect} from "react-redux";
-import {getSmurfs} from "../actions/Actions";
+import {getSmurfs, AddNew} from "../actions/Actions";
 
 class App extends Component {
 
@@ -35,6 +35,7 @@ class App extends Component {
   handleSumbit = (e)=>{
     e.preventDefault();
     console.log(this.state)
+    this.props.dispatch(AddNew(this.state))
   }
 
   componentDidMount(){
@@ -49,6 +50,7 @@ class App extends Component {
         <div>Welcome to your state management version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
+        <button onClick={() => this.props.dispatch(getSmurfs())}>Get Data</button>
         {this.props.isLoading && <div>Loading..</div>}
         {this.props.smurfs.map((s)=>(
             <div id = {s.id}>
@@ -88,7 +90,8 @@ class App extends Component {
 }
 
 const mapDispatchToProps = {
-  getSmurfs
+  getSmurfs,
+  AddNew
 }
 
 const mapStateToProps = state =>{

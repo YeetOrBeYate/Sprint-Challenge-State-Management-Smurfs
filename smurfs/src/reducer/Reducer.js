@@ -1,7 +1,7 @@
 
 import React from "react";
 
-import {add, loading} from "../actions/Actions";
+import {add, loading, newS} from "../actions/Actions";
 
 
 

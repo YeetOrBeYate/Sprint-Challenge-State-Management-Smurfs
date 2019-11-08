@@ -13,7 +13,7 @@ export function loadSmurf(){
     return{type:loading}
 }
 
-function getSmurfs(){
+export function getSmurfs(){
 
     return function(dispatch){
 
@@ -21,8 +21,9 @@ function getSmurfs(){
 
         return axios("http://localhost:3333/smurfs")
             .then((res)=>{
-                let yeet = res;
+                let yeet = res.data;
                 dispatch(addSmurf(yeet))
+                console.log("from the action", yeet)
             })
 
     }
